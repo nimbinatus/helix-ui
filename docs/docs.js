@@ -3,6 +3,7 @@
 import './components/box/box-demo';
 import './components/buttons/button-demo';
 import './components/checkboxes/checkbox-demo';
+import './components/choice-tiles/choice-tile-demo';
 import './components/lists/list-demo';
 import './components/panels/panel-demo';
 import './components/popovers/popover-demo';

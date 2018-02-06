@@ -1,0 +1,34 @@
+@import (reference) 'modules/choice-tiles';
+
+hx-tile {
+  &.pseudo-hover {
+    &:extend(hx-tile:hover);
+  }
+
+  &.pseudo-hover-checked {
+    &:extend(:checked + hx-tile);
+    &:extend(hx-tile:hover);
+    //color: @cyan-900;
+
+    hx-icon {
+      //color: @cyan-900;
+      display: inline-block;
+    }
+  }
+
+  &.pseudo-invalid-hover {
+    &:extend(hx-tile[invalid]:hover);
+  }
+
+  &.pseudo-invalid-hover-checked {
+    &:extend(hx-tile[invalid]:hover);
+  }
+
+  &.pseudo-invalid-focus {
+    &:extend(hx-tile[invalid]:focus);
+  }
+
+  &.pseudo-invalid-focus-checked {
+    &:extend(hx-tile[invalid]:focus);
+  }
+}
