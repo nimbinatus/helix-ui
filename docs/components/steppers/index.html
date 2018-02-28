@@ -1,0 +1,93 @@
+---
+title: Stepper
+also:
+  elements/hx-accordion: <hx-accordion>
+  elements/hx-accordion-panel: <hx-accordion-panel>
+---
+{% extends 'component.njk' %}
+{% block content %}
+  <section id="vue-stepperDemo">
+    <h2 class="hxSectionTitle" id="demo">Demo</h2>
+    <div class="hxRow">
+      <div class="hxCol hxSpan-9-xs">
+        <h5 class="demo-title"> One step at a time </h5>
+        <div class="demo">
+          <hx-accordion
+            id="exampleStepper"
+            :selected-panel="selected"
+          >
+            <hx-accordion-panel>
+              <header slot="header" class="hxStepHeader">
+                <span class="hxStepCounter">1</span>
+                <h4 class="hxStepTitle">Lets start here!</h4>
+                <span class="hxStepSelection" id="selectedStepperValue">{{ stepvalue}}</span>
+              </header>
+              <p>
+                <label>
+                    Enter step Name :
+                    <input type="text" id="stepName" v-model="stepvalue" />
+                </label>
+              </p>
+
+              <button class="hxBtn hxBtn--primary" @click="nextStepBindStepValue"> next </button>
+            </hx-accordion-panel>
+            <hx-accordion-panel>
+              <header slot="header" class="hxStepHeader">
+                <span class="hxStepCounter">2</span>
+                <h4 class="hxStepTitle">Enter your details</h4>
+              </header>
+              <p> I'm inside step 2, Lets test this! </p>
+              <button class="hxBtn" @click="previousStep"> previous </button>
+              <button class="hxBtn hxBtn--primary" @click="nextStep"> Next </button>
+            </hx-accordion-panel>
+            <hx-accordion-panel>
+              <header slot="header" class="hxStepHeader">
+                <span class="hxStepCounter">3</span>
+                <h4 class="hxStepTitle">Review and submit</h4>
+              </header>
+              <p> I'm inside step 3, Last Step. Should submit this! </p>
+              <button class="hxBtn" @click="previousStep"> previous </button>
+              <button class="hxBtn hxBtn--primary"> Submit </button>
+            </hx-accordion-panel>
+          </hx-accordion>
+        </div>
+        <h4 class="demo-title">Allow to open multiple panel :</h4>
+        <div class="demo stepper-demo">
+          <!-- <hx-accordion
+            id="exampleStepper"
+            skipstep=false
+          >
+            <hx-accordion-panel stepName="Acme Corp Inc." >
+              <header ref="panel-0" slot="header" class="hxStepHeader">
+                <h4 class="hxStepTitle">Panel 1</h4>
+              </header>
+              <p> Inside step/ Panel 1 </p>
+              <button class="hxBtn hxBtn--primary" @click="nextStep2"> next </button>
+            </hx-accordion-panel>
+            <hx-accordion-panel stepName="Acme Corp Inc. 2" >
+              <header ref="panel-1" slot="header" class="hxStepHeader">
+                    <h4 class="hxStepTitle">Panel 2</h4>
+                </header>
+                <p> Inside step/ Panel 2 </p>
+              <button class="hxBtn" @click="previousStep2"> previous </button>
+              <button class="hxBtn hxBtn--primary" @click="nextStep2"> Next </button>
+            </hx-accordion-panel>
+            <hx-accordion-panel stepName="Acme Corp Inc. 3" >
+              <header ref="panel-2" slot="header" class="hxStepHeader">
+                    <h4 class="hxStepTitle">Panel 3</h4>
+                </header>
+                <p> Inside step/ Panel 3 </p>
+              <button class="hxBtn" @click="previousStep2"> previous </button>
+              <button class="hxBtn hxBtn--primary"> Submit </button>
+            </hx-accordion-panel>
+          </hx-accordion> -->
+        </div>
+        {% code 'html' %}
+          {% raw %}
+
+          {% endraw %}
+        {% endcode %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
