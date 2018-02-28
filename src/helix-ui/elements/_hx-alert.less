@@ -1,0 +1,70 @@
+@import "./_hx-element";
+@import "core/hx-icon";
+
+#close,
+#error,
+#info,
+#success,
+#warning {
+  padding-bottom: 0.875em;
+  padding-top: 0.875em;
+}
+
+#error,
+#info,
+#success,
+#warning {
+  flex-basis: 1em;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-left: 1em;
+}
+
+#error,
+#success,
+#warning {
+  display: none;
+}
+
+#close {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: none;
+  margin-right: 1rem;
+}
+
+:host {
+  &([closable]) {
+    #close {
+      display: block;
+    }
+  }
+
+  &(.hxAlertSuccess) {
+    #info {
+      display: none;
+    }
+    #success {
+      display: block;
+    }
+  }
+
+  &(.hxAlertWarning) {
+    #info {
+      display: none;
+    }
+    #warning {
+      display: block;
+    }
+  }
+
+  &(.hxAlertError) {
+    #info {
+      display: none;
+    }
+    #error {
+      display: block;
+    }
+  }
+}

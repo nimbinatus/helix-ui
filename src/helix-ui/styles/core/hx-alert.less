@@ -1,0 +1,30 @@
+hx-alert {
+  background-color: @blue-100;
+  color: @gray-1000;
+  display: none;
+  font-weight: 300;
+  line-height: 1.25em;
+
+  & > * {
+    padding-bottom: 0.875em;
+    padding-top: 0.875em;
+  }
+
+  &[open] {
+    display: flex;
+  }
+
+  &.hxAlertSuccess {
+    background-color: @green-500;
+    color: @gray-0;
+  }
+
+  &.hxAlertError {
+    background-color: @red-900;
+    color: @gray-0;
+  }
+
+  &.hxAlertWarning {
+    background-color: @yellow-500;
+  }
+}

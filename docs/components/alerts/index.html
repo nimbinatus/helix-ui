@@ -1,161 +1,114 @@
 ---
 title: Alerts
+also:
+  elements/hx-alert: <hx-alert>
+  elements/hx-alerttext: <hx-alertdescription>
+  elements/hx-alertaction: <hx-alertaction>
 ---
 {% extends 'component.njk' %}
 {% block content %}
+  <div id="vue-alertDemo">
   <section>
-    <h2 id="default">Default</h2>
-
-    <div class="demo">
-      <div role="status" class="hxAlerts" aria-live="polite">
-        <div class="hxAlert">
-          <div class="hxAlert__icon">
-            <hx-icon type="info-circle"></hx-icon>
-          </div>
-          <div class="hxAlert__text">
-            <span class="hxAlert__status">Info</span>
-            Here is helpful information.
-          </div>
-          <div class="hxAlert__action">
-            <a href="#">Acknowledge</a>
-          </div>
-          <button class="hxAlert__dismiss"><hx-icon type="times"></hx-icon></button>
-        </div>
+    <h2 id="default">Demos</h2>
+    <div id="vue-alertDemo" class="hxRow" v-cloak>
+      <div class="hxCol hxSpan-12-xs hxSpan-3-lg hxOrder-2-lg">
+        <h3>Options</h3>
+        <p>
+          <label>
+            <input type="checkbox" v-model="isClosable">
+            Closable
+          </label>
+        </p>
+        <p>
+          <b>Variant:</b><br />
+          <select v-model="variant">
+            <option v-for="_variant in variants" :value="_variant">
+              {% raw %}{{ _variant.label }}{% endraw %}
+            </option>
+          </select>
+        </p>
       </div>
+
+      <div class="hxCol hxSpan-12-xs hxSpan-9-lg hxOrder-1-lg">
+        <h3>Basic Alert</h3>
+        <div class="demo alert-demo">
+          <hx-disclosure :disabled="!isClosable" class="hxBtn" aria-controls="myAlert">
+            Toggle Alert
+          </hx-disclosure>
+          <br /><br />
+          <hx-alert id="myAlert" :closable="isClosable" v-bind:class="cssClasses">
+            <hx-alertdescription>
+              <span class="hxAlertStatus">Info</span>
+              Here is helpful information.
+            </hx-alertdescription>
+            <hx-alertaction>
+              <a href="#">Acknowledge</a>
+            </hx-alertaction>
+          </hx-alert>
+        </div>
+        <template v-if="cssClasses === '' && !isClosable">
+          {% code 'html' %}
+            {% raw %}
+              <hx-alert>
+                <hx-alertdescription>
+                  <span class="hxAlertStatus">Info</span>
+                  Here is helpful information.
+                </hx-alertdescription>
+                <hx-alertaction>
+                  <a href="#">Acknowledge</a>
+                </hx-alertaction>
+              </hx-alert>
+            {% endraw %}
+          {% endcode %}
+        </template>
+        <template v-else-if="cssClasses === '' && isClosable">
+          {% code 'html' %}
+            {% raw %}
+              <hx-alert closable>
+                <hx-alertdescription>
+                  <span class="hxAlertStatus">Info</span>
+                  Here is helpful information.
+                </hx-alertdescription>
+                <hx-alertaction>
+                  <a href="#">Acknowledge</a>
+                </hx-alertaction>
+              </hx-alert>
+            {% endraw %}
+          {% endcode %}
+        </template>
+        <template v-else-if="cssClasses !== '' && !isClosable">
+          {% code 'html' %}
+            {% raw %}
+              <hx-alert class="{{cssClasses}}">
+                <hx-alertdescription>
+                  <span class="hxAlertStatus">Info</span>
+                  Here is helpful information.
+                </hx-alertdescription>
+                <hx-alertaction>
+                  <a href="#">Acknowledge</a>
+                </hx-alertaction>
+              </hx-alert>
+            {% endraw %}
+          {% endcode %}
+        </template>
+        <template v-else>
+          {% code 'html' %}
+            {% raw %}
+              <hx-alert class="{{cssClasses}}" closable>
+                <hx-alertdescription>
+                  <span class="hxAlertStatus">Info</span>
+                  Here is helpful information.
+                </hx-alertdescription>
+                <hx-alertaction>
+                  <a href="#">Acknowledge</a>
+                </hx-alertaction>
+              </hx-alert>
+            {% endraw %}
+          {% endcode %}
+        </template>
+      </div>
+
     </div>
-    {% code 'html' %}
-      <div role="status" class="hxAlerts" aria-live="polite">
-        <div class="hxAlert">
-          <div class="hxAlert__icon">
-            <hx-icon type="info-circle"></hx-icon>
-          </div>
-          <div class="hxAlert__text">
-            <span class="hxAlert__status">Info</span>
-            Here is helpful information.
-          </div>
-          <div class="hxAlert__action">
-            <a href="#">Acknowledge</a>
-          </div>
-          <button class="hxAlert__dismiss"><hx-icon type="times"></hx-icon></button>
-        </div>
-      </div>
-    {% endcode %}
   </section>
-
-  <section>
-    <h2 id="error">Error</h2>
-
-    <div class="demo">
-      <div role="status" class="hxAlerts" aria-live="polite">
-        <div class="hxAlert hxAlert--error">
-          <div class="hxAlert__icon">
-            <hx-icon type="exclamation-circle"></hx-icon>
-          </div>
-          <div class="hxAlert__text">
-            <span class="hxAlert__status">Error</span>
-            Change a few things up and try submitting again.
-          </div>
-          <div class="hxAlert__action">
-            <a href="#">Correct Issue</a>
-          </div>
-          <button class="hxAlert__dismiss"><hx-icon type="times"></hx-icon></button>
-        </div>
-      </div>
-    </div>
-    {% code 'html' %}
-      <div role="status" class="hxAlerts" aria-live="polite">
-        <div class="hxAlert hxAlert--error">
-          <div class="hxAlert__icon">
-            <hx-icon type="exclamation-circle"></hx-icon>
-          </div>
-          <div class="hxAlert__text">
-            <span class="hxAlert__status">Error</span>
-            Change a few things up and try submitting again.
-          </div>
-          <div class="hxAlert__action">
-            <a href="#">Correct Issue</a>
-          </div>
-          <button class="hxAlert__dismiss"><hx-icon type="times"></hx-icon></button>
-        </div>
-      </div>
-    {% endcode %}
-  </section>
-
-  <section>
-    <h2 id="warning">Warning</h2>
-
-    <div class="demo">
-      <div role="status" class="hxAlerts" aria-live="polite">
-        <div class="hxAlert hxAlert--warning">
-          <div class="hxAlert__icon">
-            <hx-icon type="exclamation-triangle"></hx-icon>
-          </div>
-          <div class="hxAlert__text">
-            <span class="hxAlert__status">Warning</span>
-            Best check yo self, you're not looking too good.
-          </div>
-          <div class="hxAlert__action">
-            <a href="#">Double Check</a>
-          </div>
-          <button class="hxAlert__dismiss"><hx-icon type="times"></hx-icon></button>
-        </div>
-      </div>
-    </div>
-    {% code 'html' %}
-      <div role="status" class="hxAlerts" aria-live="polite">
-        <div class="hxAlert hxAlert--warning">
-          <div class="hxAlert__icon">
-            <hx-icon type="exclamation-triangle"></hx-icon>
-          </div>
-          <div class="hxAlert__text">
-            <span class="hxAlert__status">Warning</span>
-            Best check yo self, you're not looking too good.
-          </div>
-          <div class="hxAlert__action">
-            <a href="#">Double Check</a>
-          </div>
-          <button class="hxAlert__dismiss"><hx-icon type="times"></hx-icon></button>
-        </div>
-      </div>
-    {% endcode %}
-  </section>
-
-  <section>
-    <h2 id="success">Success</h2>
-
-    <div class="demo">
-      <div role="status" class="hxAlerts" aria-live="polite">
-        <div class="hxAlert hxAlert--success">
-          <div class="hxAlert__icon">
-            <hx-icon type="checkmark"></hx-icon>
-          </div>
-          <div class="hxAlert__text">
-            <span class="hxAlert__status ">Success</span>
-            You successfully read this important alert message.
-          </div>
-          <div class="hxAlert__action">
-            <a href="#">Celebrate</a>
-          </div>
-          <button class="hxAlert__dismiss"><hx-icon type="times"></hx-icon></button>
-        </div>
-      </div>
-    </div>
-    {% code 'html' %}
-      <div role="status" class="hxAlerts" aria-live="polite">
-        <div class="hxAlert hxAlert--success">
-          <div class="hxAlert__icon">
-            <hx-icon type="checkmark"></hx-icon>
-          </div>
-          <div class="hxAlert__text">
-            <span class="hxAlert__status ">Success</span>
-            You successfully read this important alert message.
-          </div>
-          <div class="hxAlert__action">
-            <a href="#">Celebrate</a>
-          </div>
-          <button class="hxAlert__dismiss"><hx-icon type="times"></hx-icon></button>
-        </div>
-      </div>
-    {% endcode %}
-  </section>
+</div>
 {% endblock %}

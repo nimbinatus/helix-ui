@@ -1,0 +1,32 @@
+---
+title: <hx-alertdescription>
+also:
+  components/alerts: Alerts
+  elements/hx-alert: <hx-alert>
+  elements/hx-alertaction: <hx-alertaction>
+---
+{% extends 'element.njk' %}
+{% block content %}
+  <section>
+    <p>
+      The custom <code>&lt;hx-alertdescription&gt;</code> element described to
+      the user why the alert exists.
+    </p>
+
+    <hx-dl class="hxBox-md metadata">
+      <hx-def>
+        <hx-dt>Permitted Parents</hx-dt>
+        <hx-dd>an <a href="elements/hx-alert">&lt;hx-alert&gt;</a> element</hx-dd>
+      </hx-def>
+      <hx-def>
+        <hx-dt>Permitted Children</hx-dt>
+        <hx-dd>in this order:
+          <ol>
+            <li>an optional alert title element with the <code>.hxAlertStatus</code> class</li>
+            <li>any content</li>
+          </ol>
+        </hx-dd>
+      </hx-def>
+    </hx-dl>
+  </section>
+{% endblock %}

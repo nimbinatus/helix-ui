@@ -55,6 +55,9 @@
         label: 'Custom Elements',
         path: 'elements',
         children: [
+            { label: '<hx-alert>', path: 'hx-alert' },
+            { label: '<hx-alertaction>', path: 'hx-alertaction' },
+            { label: '<hx-alertdescription>', path: 'hx-alertdescription' },
             { label: '<hx-checkbox>', path: 'hx-checkbox' },
             { label: '<hx-dd>', path: 'hx-dd' },
             { label: '<hx-def>', path: 'hx-def' },

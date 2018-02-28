@@ -1,0 +1,27 @@
+---
+title: <hx-alertaction>
+also:
+  components/alerts: Alerts
+  elements/hx-alert: <hx-alert>
+  elements/hx-alertdescription: <hx-alertdescription>
+---
+{% extends 'element.njk' %}
+{% block content %}
+  <section>
+    <p>
+      The custom <code>&lt;hx-alertaction&gt;</code> element provides a user
+      with an "action" to take when an alert is given to them.
+    </p>
+
+    <hx-dl class="hxBox-md metadata">
+      <hx-def>
+        <hx-dt>Permitted Parents</hx-dt>
+        <hx-dd>an <a href="elements/hx-alert">&lt;hx-alert&gt;</a> element</hx-dd>
+      </hx-def>
+      <hx-def>
+        <hx-dt>Permitted Children</hx-dt>
+        <hx-dd>an &lt;a&gt; element with a link to the action to take</hx-dd>
+      </hx-def>
+    </hx-dl>
+  </section>
+{% endblock %}

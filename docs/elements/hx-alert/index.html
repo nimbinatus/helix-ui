@@ -1,0 +1,65 @@
+---
+title: <hx-alert>
+also:
+  components/alerts: Alerts
+  elements/hx-alertaction: <hx-alertaction>
+  elements/hx-alertdescription: <hx-alertdescription>
+---
+{% extends 'element.njk' %}
+{% block content %}
+  <section>
+    <p>
+      The custom <code>&lt;hx-alert&gt;</code> element provides a user
+      with an "at a glance" status of a given content section.
+    </p>
+
+    <hx-dl class="hxBox-md metadata">
+      <hx-def>
+        <hx-dt>Permitted Parents</hx-dt>
+        <hx-dd>any</hx-dd>
+      </hx-def>
+      <hx-def>
+        <hx-dt>Permitted Children</hx-dt>
+        <hx-dd>
+          in this order:
+          <ol>
+            <li>an <a href="elements/hx-alertdescription">&lt;hx-alertdescription&gt;</a> element</li>
+            <li>an optional <a href="elements/hx-alertaction">&lt;hx-alertaction&gt;</a> element</li>
+          </ol>
+        </hx-dd>
+      </hx-def>
+    </hx-dl>
+  </section>
+{% endblock %}
+
+{% block attributes %}
+  <dl>
+    <dt>aria-live <small>(String [polite])</small></dt>
+    <dd>
+      Automatically set by <a href="elements/hx-alert">&lt;hx-alert&gt;</a>
+      when attached to the DOM.
+    </dd>
+
+    <dt>closable</dt>
+    <dd>Determines if the alert can be closed.</dd>
+
+    <dt>open</dt>
+    <dd>Determines if the alert is open.</dd>
+
+    <dt>role <small>(String [status])</small></dt>
+    <dd>
+      Automatically set by <a href="elements/hx-alert">&lt;hx-alert&gt;</a>
+      when attached to the DOM.
+    </dd>
+  </dl>
+{% endblock %}
+
+{% block properties %}
+  <dl>
+    <dt>open <small>(Boolean [true])</small></dt>
+    <dd>Opens the alert.</dd>
+
+    <dt>closable <small>(Boolean [false])</small></dt>
+    <dd>Sets the alert to be closable.</dd>
+  </dl>
+{% endblock %}
