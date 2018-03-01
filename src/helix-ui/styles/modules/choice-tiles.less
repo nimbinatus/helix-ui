@@ -1,50 +1,62 @@
 @import (reference) 'modules/box';
 
-label {
+label.hxChoice {
   > input {
     position: absolute;
     top: -200px;
     
-    &:checked + hx-tile {
-      border-color: @cyan-900;
+    &:checked {
+      + hx-tile {
+        border-color: @cyan-900;
 
-      &:hover {
-        border-color: @cyan-500;
-      }
+        h4 {
+          color: @cyan-900;
+        }
 
-      h4 {
-        color: @cyan-900;
-      }
+        .hxSubBody {
+          color: @gray-900;
+        }
 
-      .hxSubBody {
-        color: @gray-900;
-      }
-
-      .tile-icons {
         hx-icon {
           color: @cyan-900;
         }
-      }
 
-      hx-icon[type="checkmark"] {
-        display: inline-block;
-      }
+        hx-icon[type="checkmark"] {
+          display: inline-block;
+        }
 
-      hx-icon[type="times"] {
-        display: inline-block;
+        &:hover {
+          background-color: @cyan-50;
+          border-color: @cyan-500;
+        }
       }
 
       &[invalid] {
-        border: 2px solid @red-900;
-        color: @red-900;
-
-        h4 {
-          color: @red-900;
+        + hx-tile {
+          h4 {
+            color: @red-900;
+          }
+    
+          hx-icon {
+            color: @red-900;
+          }
         }
+      }
+    }
 
-        hx-icon {
-          color: @red-900;
-        }
+    &[invalid] + hx-tile {
+      border-color: @red-900;
+      border-width: 2px;
+  
+      &:hover {
+        background-color: @red-100;
+        border-color: @red-900;
+      }
+  
+      &:focus {
+        border: none;
+        box-shadow: 0 0 4px 0 fade(@red-500, 50%);
+        outline: none;
       }
     }
 
@@ -77,10 +89,23 @@ hx-tile {
 
   h4 {
     font-weight: 700;
+    margin-bottom: 0;
   }
 
   .hxSubBody {
     margin: 0.5rem 0 0 0;
+  }
+
+  &.hxSm {
+    padding: 0.75rem;
+
+    .hxSubBody {
+      display: none;
+    }
+  }
+  
+  &.hxLg {
+    padding: 1.75rem;
   }
 
   &:hover {
@@ -111,31 +136,14 @@ hx-tile {
     width: 1rem;
   }
 
-  hx-icon[type="times"] {
-    display: none;
-    color: @red-900;
-    height: 1rem;
-    position: absolute;
-    right: 1.25rem;
-    top: 1.25rem;
-    width: 1rem;
-  }
-
   &.hxSubdued {
     opacity: 0.7;
   }
 
-  &[invalid] {
-    border: 2px solid @red-900;
-
-    &:hover {
-      background-color: @red-100;
-      border: 2px solid @red-900;
-    }
-
+  &[invalid]  {
     &:focus {
-      border: none;
-      box-shadow: 0 0 3px 0 fade(@red-500, 50%);
+      border-width: 0;
+      box-shadow: 0 0 4px 0 fade(@red-500, 50%);
       outline: none;
     }
   }

@@ -5,45 +5,62 @@ also:
 {% extends 'component.njk' %}
 {% block content %}
 
-<section id="vue-choiceTileDemo">
-  <h2 class="hxSectionTitle" id="demo">Demo</h2>
-  <div class="hxRow">
-    <div class="hxCol hxSpan-9-xs">
-      <div class="demo choice-tile-demo">
-        <form>
-          <fieldset>
-            <label>
-              <input type="radio" name="foobar" value="foo" />
-              <hx-tile>
-                <div class="tile-icons">
-                  <hx-icon type="account"></hx-icon>
-                </div>
-                <hx-icon type="checkmark"></hx-icon>
-                Default
-                <div class="tile-description">
-                  With a short description or help text.
-                </div>
-              </hx-tile>
-            </label>
-          </fieldset>
-        </form>
-      </div>
-      {% code 'html' %}
-      {% endcode %}
+<section>
+  <h2 id="demos">Demos</h2>
+  <div id="vue-choiceDemo" class="hxRow" v-cloak>
+    <div class="hxCol hxSpan-12-xs hxSpan-3-lg hxOrder-2-lg">
+      <h3>Options</h3>
+      <p>
+        <b>Size:</b><br />
+        <select v-model="size">
+          <option v-for="_size in sizes" :value="_size">
+            {% raw %}{{ _size.label }}{% endraw %}
+          </option>
+        </select>
+      </p>
+
+      <p>
+        <textarea class="hxTextCtrl" v-model="description"></textarea>
+      </p>
+
+      <p>
+        <label>
+          <input type="checkbox" v-model="isChecked" />
+          Checked
+        </label><br />
+        <label>
+          <input type="checkbox" v-model="isDisabled" />
+          Disabled
+        </label><br />
+        <label>
+          <input type="checkbox" v-model="isInvalid" />
+          Invalid
+        </label><br />
+        <label>
+          <input type="checkbox" v-model="isSubdued" />
+          Subdued
+        </label>
+      </p>
+
     </div>
-    <div class="hxCol hxSpan-3-xs">
-      <p>
-      Variant:
-      <select v-model="variant">
-        <option v-for="_variant in variants" :value="_variant">
-          {% raw %}{{ _variant.label }}{% endraw %}
-        </option>
-      </select>
-      </p>
-      <p>
-      Hover: 
-      <input type="checkbox" v-model="isHovered">
-      </p>
+    <div class="hxCol hxSpan-12-xs hxSpan-9-lg hxOrder-1-lg">
+      <div class="demo choice-demo">
+        <label class="hxChoice">
+          <input type="radio"
+            :checked="isChecked"
+            :disabled="isDisabled"
+            :invalid="isInvalid" />
+          <hx-tile :class="tileClasses">
+            <div class="tile-icons">
+              <hx-icon type="account"></hx-icon>
+            </div>
+            <hx-icon type="checkmark"></hx-icon>
+            <h4>Default</h4>
+            <p class="hxSubBody" v-text="description"></p>
+          </hx-tile>
+        </label>
+      </div>
+      {% code 'html' %}{% raw %}{{snippet}}{% endraw %}{% endcode %}
     </div>
   </div>
 </section>
@@ -54,7 +71,7 @@ also:
     <form>
       <fieldset>
         <div class="hxRow">
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
             <input type="radio" name="foobar" value="foo" />
             <hx-tile>
               <div class="tile-icons">
@@ -62,10 +79,10 @@ also:
               </div>
               <hx-icon type="checkmark"></hx-icon>
               <h4>Default</h4>
-                <p class="hxSubBody">With a short description or help text.</p>
+              <p class="hxSubBody">With a short description or help text.</p>
             </hx-tile>
           </label>
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
             <input type="radio" name="foobar" value="foo" />
             <hx-tile class="pseudo-hover">
               <div class="tile-icons">
@@ -73,13 +90,13 @@ also:
               </div>
               <hx-icon type="checkmark"></hx-icon>
               <h4>Hover</h4>
-                <p class="hxSubBody">
-                  With a little longer description or help text. Possibly with 
-                  a couple lines of text. More and more and more text.
-                </p>
+              <p class="hxSubBody">
+                With a little longer description or help text. Possibly with 
+                a couple lines of text. More and more and more text.
+              </p>
             </hx-tile>
           </label>
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
             <input type="radio" value="foo" checked />
             <hx-tile>
               <div class="tile-icons">
@@ -87,29 +104,44 @@ also:
               </div>
               <hx-icon type="checkmark"></hx-icon>
               <h4>Selected</h4>
-                <p class="hxSubBody">
-                  With a much long description or help text. Possibly with 
-                  several lines of text. More and more and more text. More and 
-                  more and more text.
-                </p>
+              <p class="hxSubBody">
+                With a much long description or help text. Possibly with 
+                several lines of text. More and more and more text. More and 
+                more and more text.
+              </p>
             </hx-tile>
           </label>
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
-            <input type="radio" value="foo" />
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
+            <input type="radio" value="foo" checked />
             <hx-tile class="pseudo-hover-checked">
               <div class="tile-icons">
                 <hx-icon type="account"></hx-icon>
               </div>
               <hx-icon type="checkmark"></hx-icon>
               <h4>Hover Selected</h4>
-                <p class="hxSubBody">
-                  With a much long description or help text. Possibly with 
-                  several lines of text. More and more and more text. More and 
-                  more and more text.
-                </p>
+              <p class="hxSubBody">
+                With a much long description or help text. Possibly with 
+                several lines of text. More and more and more text. More and 
+                more and more text.
+              </p>
             </hx-tile>
           </label>
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
+            <input type="radio" value="foo" />
+            <hx-tile class="pseudo-hover-focus">
+              <div class="tile-icons">
+                <hx-icon type="account"></hx-icon>
+              </div>
+              <hx-icon type="checkmark"></hx-icon>
+              <h4>Default Focus</h4>
+              <p class="hxSubBody">
+                With a much long description or help text. Possibly with 
+                several lines of text. More and more and more text. More and 
+                more and more text.
+              </p>
+            </hx-tile>
+          </label>
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
             <input type="radio" name="foobar" value="foo" />
             <hx-tile class="hxSubdued">
               <div class="tile-icons">
@@ -117,10 +149,10 @@ also:
               </div>
               <hx-icon type="checkmark"></hx-icon>
               <h4>Subdued</h4>
-                <p class="hxSubBody">With a short description or help text.</p>
+              <p class="hxSubBody">With a short description or help text.</p>
             </hx-tile>
           </label>
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
             <input type="radio" name="foobar" value="foo" disabled />
             <hx-tile>
               <div class="tile-icons">
@@ -128,10 +160,10 @@ also:
               </div>
               <hx-icon type="checkmark"></hx-icon>
               <h4>Disabled</h4>
-                <p class="hxSubBody">
-                  With a little longer description or help text. Possibly with 
-                  a couple lines of text. More and more and more text.
-                </p>
+              <p class="hxSubBody">
+                With a little longer description or help text. Possibly with 
+                a couple lines of text. More and more and more text.
+              </p>
             </hx-tile>
           </label>
         </div>
@@ -149,70 +181,70 @@ also:
       <hx-error>Please select an option</hx-error>
       <fieldset>
         <div class="hxRow">
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
-            <input type="radio" name="foobar" value="foo" />
-            <hx-tile invalid>
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
+            <input type="radio" name="foobar" value="foo" invalid />
+            <hx-tile>
               <div class="tile-icons">
                 <hx-icon type="account"></hx-icon>
               </div>
-              <hx-icon type="times"></hx-icon>
+              <hx-icon type="checkmark"></hx-icon>
               <h4>Invalid Unselected</h4>
-                <p class="hxSubBody">With a short description or help text.</p>
+              <p class="hxSubBody">With a short description or help text.</p>
             </hx-tile>
           </label>
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
-            <input type="radio" value="foo" checked/>
-            <hx-tile invalid>
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
+            <input type="radio" value="foo" checked invalid />
+            <hx-tile>
               <div class="tile-icons">
                 <hx-icon type="account"></hx-icon>
               </div>
-              <hx-icon type="times"></hx-icon>
+              <hx-icon type="checkmark"></hx-icon>
               <h4>Invalid Selected</h4>
-                <p class="hxSubBody">With a short description or help text.</p>
+              <p class="hxSubBody">With a short description or help text.</p>
             </hx-tile>
           </label>
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
-            <input type="radio" name="foobar" value="foo"/>
-            <hx-tile invalid class="pseudo-invalid-hover">
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice pseudo-invalid-hover">
+            <input type="radio" name="foobar" value="foo" invalid />
+            <hx-tile class="pseudo-invalid-hover">
               <div class="tile-icons">
                 <hx-icon type="account"></hx-icon>
               </div>
-              <hx-icon type="times"></hx-icon>
+              <hx-icon type="checkmark"></hx-icon>
               <h4>Invalid Unselected Hover</h4>
-                <p class="hxSubBody">With a short description or help text.</p>
+              <p class="hxSubBody">With a short description or help text.</p>
             </hx-tile>
           </label>
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
-            <input type="radio" value="foo" checked/>
-            <hx-tile invalid class="pseudo-invalid-hover-checked">
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
+            <input type="radio" value="foo" checked invalid />
+            <hx-tile class="pseudo-invalid-hover-checked">
               <div class="tile-icons">
                 <hx-icon type="account"></hx-icon>
               </div>
-              <hx-icon type="times"></hx-icon>
+              <hx-icon type="checkmark"></hx-icon>
               <h4>Invalid Selected Hover</h4>
-                <p class="hxSubBody">With a short description or help text.</p>
+              <p class="hxSubBody">With a short description or help text.</p>
             </hx-tile>
           </label>
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
-            <input type="radio" name="foobar" value="foo" />
-            <hx-tile invalid class="pseudo-invalid-focus">
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
+            <input type="radio" name="foobar" value="foo" invalid />
+            <hx-tile class="pseudo-invalid-focus">
               <div class="tile-icons">
                 <hx-icon type="account"></hx-icon>
               </div>
-              <hx-icon type="times"></hx-icon>
+              <hx-icon type="checkmark"></hx-icon>
               <h4>Invalid Unselected Focused</h4>
-                <p class="hxSubBody">With a short description or help text.</p>
+              <p class="hxSubBody">With a short description or help text.</p>
             </hx-tile>
           </label>
-          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg">
-            <input type="radio" value="foo" checked />
-            <hx-tile invalid class="pseudo-invalid-focus-checked">
+          <label class="hxCol hxSpan-12-xs hxSpan-6-md hxSpan-4-lg hxChoice">
+            <input type="radio" value="foo" checked invalid />
+            <hx-tile class="pseudo-invalid-focus-checked">
               <div class="tile-icons">
                 <hx-icon type="account"></hx-icon>
               </div>
-              <hx-icon type="times"></hx-icon>
+              <hx-icon type="checkmark"></hx-icon>
               <h4>Invalid Selected Focused</h4>
-                <p class="hxSubBody">With a short description or help text.</p>
+              <p class="hxSubBody">With a short description or help text.</p>
             </hx-tile>
           </label>
         </div>

@@ -1,34 +1,45 @@
 @import (reference) 'modules/choice-tiles';
 
+#vue-choiceDemo {
+  hx-tile {
+    max-width: 15rem;
+
+    &.hxSm {
+      max-width: 8rem;
+    }
+
+    &.hxLg {
+      max-width: 20rem;
+    }
+  }
+}
+
 hx-tile {
   &.pseudo-hover {
     &:extend(hx-tile:hover);
   }
 
   &.pseudo-hover-checked {
-    &:extend(:checked + hx-tile);
-    &:extend(hx-tile:hover);
-    //color: @cyan-900;
+    &:extend(label.hxChoice > input:checked + hx-tile:hover);
+    border-color: @cyan-500 !important;
+  }
 
-    hx-icon {
-      //color: @cyan-900;
-      display: inline-block;
-    }
+  &.pseudo-hover-focus {
+    &:extend(hx-tile:focus);
   }
 
   &.pseudo-invalid-hover {
-    &:extend(hx-tile[invalid]:hover);
+    &:extend(label.hxChoice > input[invalid] + hx-tile:hover);
   }
 
   &.pseudo-invalid-hover-checked {
-    &:extend(hx-tile[invalid]:hover);
+    &:extend(label.hxChoice > input:checked[invalid] + hx-tile);
+    &:extend(label.hxChoice > input[invalid] + hx-tile:hover);
   }
 
-  &.pseudo-invalid-focus {
-    &:extend(hx-tile[invalid]:focus);
-  }
-
+  &.pseudo-invalid-focus,
   &.pseudo-invalid-focus-checked {
-    &:extend(hx-tile[invalid]:focus);
+    &:extend(label.hxChoice > input[invalid] + hx-tile:focus);
+    border: none;
   }
 }
