@@ -5,13 +5,12 @@ const tagName = 'hx-accordion-panel';
 const template = document.createElement('template');
 template.innerHTML = `
   <style>${shadowStyles}</style>
-  <hx-disclosure id="hx-accordion-header" aria-controls="hx-accordion-body">
+  <button id="toggle" aria-controls="body" aria-expanded="false">
     <slot name="header"></slot>
-    <hx-icon class="hxPrimary" type="angle-down"></hx-icon>
-  </hx-disclosure>
-  <hx-reveal id="hx-accordion-body">
+  </button>
+  <div id="body" aria-expanded="false">
     <slot></slot>
-  </hx-reveal>
+  </div>
 `;
 
 export class HXAccordionPanelElement extends HXElement {
@@ -25,44 +24,37 @@ export class HXAccordionPanelElement extends HXElement {
 
     constructor () {
         super(tagName, template);
-        this._$disclosure = this.shadowRoot.querySelector('hx-disclosure');
-        this._$reveal = this.shadowRoot.querySelector('hx-reveal');
-        this._$disclosure.expanded = this.open;
-        this._$reveal.open = this.open;
+
+        this._btnToggle = this.shadowRoot.getElementById('toggle');
+        this._elBody = this.shadowRoot.getElementById('body');
+
+        this._onClick = this._onClick.bind(this);
     }
 
     connectedCallback () {
         this.$upgradeProperty('open');
-        // logic to expand and show current-step by default
-        if (this.parentElement.panels[this.parentElement.getAttribute('selected-panel')] === this) {
-            this._$disclosure.expanded = this.open;
-            //this.shadowRoot.querySelector('hx-reveal').setAttribute('open', '');
-        }
-        console.log('panel -> connectedCallback');
-        //this._$reveal.addEventListener('open', this._onOpen);
+
+        this._btnToggle.addEventListener('click', this._onClick);
     }
 
     disconnectedCallback () {
-        this._$reveal.removeEventListener('open', this._onOpen);
+        this._btnToggle.removeEventListner('click', this._onClick);
     }
 
     attributeChangedCallback (attr, oldVal, newVal) {
-        if (newVal !== null) {
-            
-            //this._$disclosure.setAttribute('aria-expanded', true);
-            console.log('panel -> attributeChangedCallback');
-            this._$disclosure.expanded = this.open;
-            if (oldVal !== newVal) {
+        let isOpen = (newVal !== null);
+
+        if (newVal !== oldVal) {
+            this._btnToggle.setAttribute('aria-expanded', isOpen);
+            this._elBody.setAttribute('aria-expanded', isOpen);
+            if (isOpen) {
                 this.$emit('open');
             }
-        } else {
-            this._$disclosure.expanded = false;
         }
     }
-        
-    _onOpen (evt) {
-        this.open = true;
-        evt.stopPropagation();
+
+    _onClick (evt) {
+        this.open = !this.open;
     }
 
     get open () {
@@ -70,7 +62,11 @@ export class HXAccordionPanelElement extends HXElement {
     }
 
     set open (newVal) {
-        newVal ? this.setAttribute('open', '') : this.removeAttribute('open');
+        if (newVal) {
+            this.setAttribute('open', '');
+        } else {
+            this.removeAttribute('open');
+        }
     }
 
 }

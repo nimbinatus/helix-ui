@@ -17,15 +17,9 @@ export class HXAccordionElement extends HXElement {
 
     connectedCallback () {
         this.$upgradeProperty('selected-panel');
-        //this._allowMultiplePanel = !this.hasAttribute('selected-panel');
-        // this.panelHeaders.forEach(header => {
-        //     header.addEventListener('keyup', this._keyUp);
-        //     header.addEventListener('click', this._toggle);
-        // });
         this.panels.forEach(panel => {
             panel.addEventListener('open', this._onPanelOpen);
         });
-        //this.addEventListener('panel-close', this._toggle);
     }
 
     disconnectedCallback () {
@@ -42,7 +36,6 @@ export class HXAccordionElement extends HXElement {
         if (newVal !== null) {
             this._openPanel(Number(newVal));
         }
-
     }
 
     _onPanelOpen (evt) {
@@ -51,7 +44,6 @@ export class HXAccordionElement extends HXElement {
     }
 
     _openPanel (index) {
-        console.log(index);
         if (this.hasAttribute('selected-panel')) {
             this.panels.forEach((panel, idx) => {
                 if (index === idx) {
@@ -59,13 +51,12 @@ export class HXAccordionElement extends HXElement {
                     panel.focus();
                 } else  {
                     panel.open = false;
-                    panel.shadowRoot && panel.shadowRoot.querySelector('hx-reveal').removeAttribute('open');
                     panel.blur();
                 }
             });
         }
     }
-    
+
     set selectedPanel (idx) {
         this.setAttribute('selected-panel', idx);
     }
