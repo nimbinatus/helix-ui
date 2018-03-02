@@ -31,7 +31,7 @@ also:
 
               <button class="hxBtn hxBtn--primary" @click="nextStepBindStepValue"> next </button>
             </hx-accordion-panel>
-            <hx-accordion-panel>
+            <hx-accordion-panel disabled="true">
               <header slot="header" class="hxStepHeader">
                 <span class="hxStepCounter">2</span>
                 <h4 class="hxStepTitle">Enter your details</h4>
@@ -40,7 +40,7 @@ also:
               <button class="hxBtn" @click="previousStep"> previous </button>
               <button class="hxBtn hxBtn--primary" @click="nextStep"> Next </button>
             </hx-accordion-panel>
-            <hx-accordion-panel>
+            <hx-accordion-panel disabled="true">
               <header slot="header" class="hxStepHeader">
                 <span class="hxStepCounter">3</span>
                 <h4 class="hxStepTitle">Review and submit</h4>
@@ -53,34 +53,26 @@ also:
         </div>
         <h4 class="demo-title">Allow to open multiple panel :</h4>
         <div class="demo stepper-demo">
-          <!-- <hx-accordion
-            id="exampleStepper"
-            skipstep=false
-          >
+          <hx-accordion>
             <hx-accordion-panel stepName="Acme Corp Inc." >
               <header ref="panel-0" slot="header" class="hxStepHeader">
                 <h4 class="hxStepTitle">Panel 1</h4>
               </header>
               <p> Inside step/ Panel 1 </p>
-              <button class="hxBtn hxBtn--primary" @click="nextStep2"> next </button>
             </hx-accordion-panel>
             <hx-accordion-panel stepName="Acme Corp Inc. 2" >
               <header ref="panel-1" slot="header" class="hxStepHeader">
                     <h4 class="hxStepTitle">Panel 2</h4>
                 </header>
                 <p> Inside step/ Panel 2 </p>
-              <button class="hxBtn" @click="previousStep2"> previous </button>
-              <button class="hxBtn hxBtn--primary" @click="nextStep2"> Next </button>
             </hx-accordion-panel>
             <hx-accordion-panel stepName="Acme Corp Inc. 3" >
               <header ref="panel-2" slot="header" class="hxStepHeader">
                     <h4 class="hxStepTitle">Panel 3</h4>
                 </header>
                 <p> Inside step/ Panel 3 </p>
-              <button class="hxBtn" @click="previousStep2"> previous </button>
-              <button class="hxBtn hxBtn--primary"> Submit </button>
             </hx-accordion-panel>
-          </hx-accordion> -->
+          </hx-accordion>
         </div>
         {% code 'html' %}
           {% raw %}

@@ -1,5 +1,4 @@
 import { HXElement } from './HXElement';
-import { KEYS } from '../util';
 
 export class HXAccordionElement extends HXElement {
     static get is () {
@@ -12,6 +11,7 @@ export class HXAccordionElement extends HXElement {
 
     constructor () {
         super();
+        this._$allowMuliplePanel = !this.hasAttribute('selected-panel');
         this._onPanelOpen = this._onPanelOpen.bind(this);
     }
 
@@ -40,6 +40,7 @@ export class HXAccordionElement extends HXElement {
 
     _onPanelOpen (evt) {
         let idx = this.panels.indexOf(evt.target);
+        this.selectedPanel = idx;
         this._openPanel(idx);
     }
 
