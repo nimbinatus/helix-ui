@@ -2,26 +2,34 @@ if (document.getElementById('vue-stepperDemo')) {
     new Vue({
         el: '#vue-stepperDemo',
         data: {
-            selected : 0,
+            selected: 0,
+            stepvalue: '',
         },
         methods: {
             getAccordionElement: function (evt) {
                 return evt.target.parentElement.parentElement;
             }, 
-            nextStep: function (event) {
-                let accordion = this.getAccordionElement(event);
-                this.selected = Number (accordion.getAttribute('selected-panel')) || 0;
-                this.selected += 1;
-                accordion.getElementsByTagName('hx-accordion-panel')[this.selected].removeAttribute('disabled');
+            getPanelArray: function (evt) {
+                return Array.from(this.getAccordionElement(evt).getElementsByTagName('hx-accordion-panel'));
             },
-            previousStep: function (event) {
-                this.selected = Number (this.getAccordionElement(event).getAttribute('selected-panel'));
-                this.selected = this.selected > 0 ? this.selected -= 1 : 0;
+            nextStep: function (event) {
+                this.selected = Number(event.currentTarget.parentElement.getAttribute('index')) + 1;
+                this.getPanelArray(event)[this.selected].removeAttribute('disabled');
+            },
+            previousStep: function () {
+                this.selected = Number(event.currentTarget.parentElement.getAttribute('index')) - 1;
             },
             nextStepBindStepValue: function (event) {
                 document.getElementById('selectedStepperValue').innerText = this.stepvalue;
                 this.getAccordionElement(event).setAttribute('complete','');
                 this.nextStep(event);
+            },
+            updateStepValue: function () {
+                let panel = event.currentTarget.parentElement;
+                if (!panel.getAttribute('disabled')) {
+                    this.selected = Number(panel.getAttribute('index'));
+                }
+                event.stopPropagation();
             },
         },
     });
