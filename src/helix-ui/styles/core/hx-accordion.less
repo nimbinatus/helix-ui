@@ -1,13 +1,6 @@
 hx-accordion {
   display: block;
   text-decoration-color: #3b8fbf;
-
-  .hxStepSelection {
-    &:hover {
-      color: @cyan-500;
-      cursor: pointer;
-    }
-  }
 }
 
 .hxStepHeader {
@@ -16,16 +9,16 @@ hx-accordion {
   width: 95%;
   &:hover {
     .hxStepCounter {
-      background-color: #16b9d4;
+      background-color: @cyan-500;
     }
   }
 }
 
 .hxStepCounter {
   align-items: center;
-  background-color: #0c7c84;
+  background-color: @cyan-900;
   border-radius: 1.25rem;
-  color: #ffffff;
+  color: @gray-0;
   display: flex;
   flex: 0 0 2.5rem;
   font-size: 1.5rem;
@@ -67,19 +60,31 @@ hx-accordion-panel {
     cursor: pointer;
   }
 
+  &[open] {
+    .hxStepCounter {
+      background-color: @cyan-500;
+      color: @gray-0;
+    }
+  }
+
   &[disabled] {
     .hxStepCounter {
-        background-color: #d8d8d8;
-        color: #757575;
+      background-color: @gray-400;
+      color: @gray-700;
     }
+
+    .hxStepTitle {
+      color: @gray-700;
+    }
+
     &:hover {
-        .hxStepCounter {
-            background-color: #d8d8d8;
-        color: #757575;
-        }
-        header {
-          cursor: inherit;
-        }
+      .hxStepCounter {
+        background-color: @gray-400;
+        color: @gray-700;
+      }
+      header {
+        cursor: inherit;
+      }
     }
-}
+  }
 }
