@@ -44,7 +44,7 @@ export class HXAccordionPanelElement extends HXElement {
     }
 
     disconnectedCallback () {
-        this._btnToggle.removeEventListner('click', this._onClick);
+        this._btnToggle.removeEventListener('click', this._onClick);
     }
 
     attributeChangedCallback (attr, oldVal, newVal) {

@@ -7,7 +7,7 @@ if (document.getElementById('vue-stepperDemo')) {
         },
         methods: {
             getAccordionElement: function (evt) {
-                return evt.target.parentElement.parentElement;
+                return evt.currentTarget.parentElement.parentElement;
             }, 
             getPanelArray: function (evt) {
                 return Array.from(this.getAccordionElement(evt).getElementsByTagName('hx-accordion-panel'));
@@ -16,7 +16,8 @@ if (document.getElementById('vue-stepperDemo')) {
                 this.selected = Number(event.currentTarget.parentElement.getAttribute('index')) + 1;
                 this.getPanelArray(event)[this.selected].removeAttribute('disabled');
             },
-            previousStep: function () {
+            previousStep: function (event) {
+                this.getPanelArray(event)[this.selected].setAttribute('disabled', true);
                 this.selected = Number(event.currentTarget.parentElement.getAttribute('index')) - 1;
             },
             nextStepBindStepValue: function (event) {
@@ -24,10 +25,17 @@ if (document.getElementById('vue-stepperDemo')) {
                 this.getAccordionElement(event).setAttribute('complete','');
                 this.nextStep(event);
             },
-            updateStepValue: function () {
-                let panel = event.currentTarget.parentElement;
+            updateStepValue: function (event) {
+                let panel = event.currentTarget;
                 if (!panel.getAttribute('disabled')) {
                     this.selected = Number(panel.getAttribute('index'));
+                    if (this.selected === 0) {
+                        this.getPanelArray(event).forEach((item, idx) => {
+                            if (idx > 0) {
+                                item.setAttribute('disabled', true);
+                            }
+                        });
+                    }
                 }
                 event.stopPropagation();
             },
