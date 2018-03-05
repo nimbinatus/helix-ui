@@ -3,88 +3,8 @@ hx-accordion {
   text-decoration-color: #3b8fbf;
 }
 
-.hxStepHeader {
-  align-items: center;
-  display: flex;
-  width: 95%;
-  &:hover {
-    .hxStepCounter {
-      background-color: @cyan-500;
-    }
-  }
-}
-
-.hxStepCounter {
-  align-items: center;
-  background-color: @cyan-900;
-  border-radius: 1.25rem;
-  color: @gray-0;
-  display: flex;
-  flex: 0 0 2.5rem;
-  font-size: 1.5rem;
-  height: 2.5rem;
-  justify-content: center;
-  margin-right: 1rem;
-  text-align: center;
-}
-
-.hxStepTitle {
-  flex: 0 0 40%;
-  font-size: 1.5rem;
-}
-
-.hxStepSelection {
-  flex: 1 1 auto;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.hxStepArrow {
-  flex: 0 0 1rem;
-  font-size: 1rem;
-}
-
 .demo-title {
   font-weight: 400;
   font-size: 20px;
   padding: 20px;
-}
-
-hx-accordion-panel {
-  border-top: 1px solid @gray-300;
-  display: block;
-  padding: 24px 16px;
-
-  header {
-    display: -webkit-inline-box;
-    cursor: pointer;
-  }
-
-  &[open] {
-    .hxStepCounter {
-      background-color: @cyan-500;
-      color: @gray-0;
-    }
-  }
-
-  &[disabled] {
-    .hxStepCounter {
-      background-color: @gray-400;
-      color: @gray-700;
-    }
-
-    .hxStepTitle {
-      color: @gray-700;
-    }
-
-    &:hover {
-      .hxStepCounter {
-        background-color: @gray-400;
-        color: @gray-700;
-      }
-      header {
-        cursor: inherit;
-      }
-    }
-  }
 }

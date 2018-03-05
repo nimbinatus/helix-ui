@@ -1,48 +1,30 @@
 @aimport "./_hx-element";
 @import "core/hx-icon";
 
-/*
-#hx-accordion-header {
-  display: inline-flex;
-  width: 100%;
-
-  .hxStepSelection {
-    flex: 1 1 auto;
-    font-size: 1rem;
-    font-weight: 500;
-  }
-
-  .hxStepArrow {
-    svg {
-      height: 17px;
-    }
-}
-}
-*/
-
 .hx-accordion-btn {
+  align-items: center;
   background-color: #ffffff;
-  width: 100%;
-  padding : .5rem 1rem;
   border: 0;
+  cursor: pointer;
   display: flex;
+  padding: 0;
+  width: 100%;
 }
 
 .hx-accordion-pnl-body {
   display: none;
 
   &[open] {
-      display: block;
+    display: block;
   }
 }
 
 .hxStepArrow {
   flex: 0 0 1rem;
   font-size: 1rem;
+  margin-left: 1rem;
   svg {
     height: 1rem;
     width: 1rem;
   }
 }
-
-
