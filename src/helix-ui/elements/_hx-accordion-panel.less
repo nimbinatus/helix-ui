@@ -1,9 +1,9 @@
-@aimport "./_hx-element";
+@import "./_hx-element";
 @import "core/hx-icon";
 
-.hx-accordion-btn {
+#toggle {
   align-items: center;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 0;
   cursor: pointer;
   display: flex;
@@ -11,20 +11,10 @@
   width: 100%;
 }
 
-.hx-accordion-pnl-body {
+#body {
   display: none;
 
   &[open] {
     display: block;
-  }
-}
-
-.hxStepArrow {
-  flex: 0 0 1rem;
-  font-size: 1rem;
-  margin-left: 1rem;
-  svg {
-    height: 1rem;
-    width: 1rem;
   }
 }

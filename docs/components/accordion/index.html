@@ -1,0 +1,92 @@
+---
+title: Accordion
+also:
+  elements/hx-accordion: <hx-accordion>
+  elements/hx-accordion-panel: <hx-accordion-panel>
+---
+{% extends 'component.njk' %}
+{% block content %}
+  <section id="vue-accordionDemo">
+    <h2 class="hxSectionTitle" id="demo">Accordion</h2>
+    <div class="hxRow">
+      <div class="hxCol hxSpan-9-xs">
+        <div class="demo">
+          <hx-accordion
+            id="exampleStepper"
+            v-bind:selected-panel="selected"
+          >
+            <hx-accordion-panel>
+              <header slot="header" class="hxStepHeader">
+                <span class="hxStepTitle">Start here!</span>
+              </header>
+              <p>
+                <label>
+                  Enter step Name :
+                  <input type="text" id="stepName" />
+                </label>
+              </p>
+            </hx-accordion-panel>
+            <hx-accordion-panel>
+              <header slot="header" class="hxStepHeader">
+                <span class="hxStepTitle">Review</span>
+              </header>
+              <p> I'm inside step 2! </p>
+            </hx-accordion-panel>
+            <hx-accordion-panel>
+              <header slot="header" class="hxStepHeader">
+                <span class="hxStepTitle">submit</span>
+              </header>
+              <p> I'm inside step 3, It works! </p>
+            </hx-accordion-panel>
+          </hx-accordion>
+          <template v-if="selected === null">
+            {% code 'html' %}
+              {% raw %}
+                <hx-accordion id="exampleStepper">
+                  <hx-accordion-panel>
+                    <header slot="header" class="hxStepHeader">
+                      <span class="hxStepTitle">Start here!</span>
+                    </header>
+                    <p>
+                      ...
+                    </p>
+                  </hx-accordion-panel>
+                  <hx-accordion-panel>....</hx-accordion-panel>
+                  ....
+                </hx-accordion>
+              {% endraw %}
+            {% endcode %}
+          </template>
+          <template v-else>
+            {% code 'html' %}
+              {% raw %}
+                <hx-accordion id="exampleStepper" selected-panel=0>
+                  <hx-accordion-panel>
+                    <header slot="header" class="hxStepHeader">
+                      <span class="hxStepTitle">Start here!</span>
+                    </header>
+                    <p>
+                      ...
+                    </p>
+                  </hx-accordion-panel>
+                  <hx-accordion-panel>....</hx-accordion-panel>
+                  ....
+                </hx-accordion>
+              {% endraw %}
+            {% endcode %}
+          </template>
+        </div>
+      </div>
+      <div class="hxCol hxSpan-12-xs hxSpan-3-lg hxOrder-2-lg">
+        <p>
+          <b>Variant:</b><br />
+          <select v-model="variant">
+            <option v-for="_variant in variants" :value="_variant">
+              {% raw %}{{ _variant.label }}{% endraw %}
+            </option>
+          </select>
+        </p>
+      </div>
+    </div>
+  </section>
+{% endblock %}

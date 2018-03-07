@@ -1,7 +1,7 @@
 ---
 title: <hx-accordion>
 also:
-  components/stepper: Stepper
+  components/accordion: Accordion
   elements/hx-accordion-panel: <hx-accordion-panel>
 ---
 {% extends 'element.njk' %}
@@ -24,10 +24,18 @@ also:
 
 {% block attributes %}
   <dl>
-    <dt>selected-panel{Number=0}</dt>
+    <dt>selected-panel <small>{Number=0}</small></dt>
     <dd>
-      An optional attribute, Zero-based index of the currently active step/panel and allows to open only one panel at a time.
-      If not explicitly defined, allows to open multiple panel at the same time.
+      An optional attribute, Zero-based index of the currently active panel and only one panel can be opened at once.
+      If not defined, multiple panel can be opened at once.
+    </dd>
+  </dl>
+{% endblock %}
+{% block properties %}
+  <dl>
+    <dt>selected-panel <small>{Number [0]}</small></dt>
+    <dd>
+      A property allows to control weather to allow muliple panel open or only one at once.
     </dd>
   </dl>
 {% endblock %}

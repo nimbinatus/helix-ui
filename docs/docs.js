@@ -1,5 +1,6 @@
 'use strict';
 
+import './components/accordion/accordion-demo';
 import './components/box/box-demo';
 import './components/buttons/button-demo';
 import './components/checkboxes/checkbox-demo';
@@ -8,7 +9,6 @@ import './components/panels/panel-demo';
 import './components/popovers/popover-demo';
 import './components/reveals/reveal-demo';
 import './components/status-pills/status-demo';
-import './components/steppers/stepper-demo';
 import './components/tables/table-demo';
 import './components/tooltips/tooltip-demo';
 

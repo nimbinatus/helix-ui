@@ -18,6 +18,7 @@
         label: 'Components',
         path: 'components',
         children: [
+            { label: 'Accordion', path: 'accordion' },
             { label: 'Alerts', path: 'alerts' },
             { label: 'Box', path: 'box' },
             { label: 'Breadcrumbs', path: 'breadcrumbs' },
@@ -43,7 +44,6 @@
             { label: 'Popovers', path: 'popovers' },
             { label: 'Reveals', path: 'reveals' },
             { label: 'Status Pills', path: 'status-pills' },
-            { label: 'Steppers', path: 'steppers' },
             { label: 'Tables', path: 'tables' },
             { label: 'Tabs', path: 'tabs' },
             { label: 'Text Inputs', path: 'text-inputs' },

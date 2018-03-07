@@ -1,5 +1,5 @@
 ---
-title: <hx-accordion>
+title: <hx-accordion-panel>
 also:
   components/stepper: Stepper
   elements/hx-accordion: <hx-accordion>
@@ -21,12 +21,15 @@ also:
     </hx-dl>
   </section>
 {% endblock %}
-
+{% block attributes %}
+  <dl>
+    <dt>open</dt>
+    <dd>Opens the panel</dd>
+  </dl>
+{% endblock %}
 {% block properties %}
   <dl>
-    <dt>open <small>(Boolean [false])</small></dt>
-    <dd>
-      A property allows to hook up with the state(open/close) of the panel.
-    </dd>
+    <dt>open <small>(Boolean)</small></dt>
+    <dd>Determines if panel is open.</dd>
   </dl>
 {% endblock %}

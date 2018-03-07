@@ -1,16 +1,15 @@
 import { HXElement } from './HXElement';
-import Icons from '../icons';
 import shadowStyles from './_hx-accordion-panel.less';
 
 const tagName = 'hx-accordion-panel';
 const template = document.createElement('template');
 template.innerHTML = `
   <style>${shadowStyles}</style>
-  <button class="hx-accordion-btn" id="toggle" aria-controls="body" aria-expanded="false">
+  <button id="toggle" aria-controls="body" aria-expanded="false">
     <slot name="header"></slot>
-    <span class="hxStepArrow" id="hx-angle-up-down"> </span>
+    <hx-icon type="angle-down" />
   </button>
-  <div id="body" aria-expanded="false" class="hx-accordion-pnl-body">
+  <div id="body" aria-expanded="false">
     <slot></slot>
   </div>
 `;
@@ -29,16 +28,14 @@ export class HXAccordionPanelElement extends HXElement {
 
         this._btnToggle = this.shadowRoot.getElementById('toggle');
         this._elBody = this.shadowRoot.getElementById('body');
-        this._arrSpan = this.shadowRoot.getElementById('hx-angle-up-down');
+        this._arrow = this.shadowRoot.querySelector('hx-icon');
         this._onClick = this._onClick.bind(this);
     }
 
     connectedCallback () {
         this.$upgradeProperty('open');
         if (this.open) {
-            this._arrSpan.innerHTML = Icons['angle-up'];
-        } else {
-            this._arrSpan.innerHTML = Icons['angle-down'];
+            this._arrow.setAttribute('type', 'angle-up');
         }
         this._btnToggle.addEventListener('click', this._onClick);
     }
@@ -54,13 +51,11 @@ export class HXAccordionPanelElement extends HXElement {
             this._btnToggle.setAttribute('aria-expanded', isOpen);
             this._elBody.setAttribute('aria-expanded', isOpen);
             if (isOpen) {
-                if (!this.parentElement._$allowMuliplePanel) {
-                    this.$emit('open');
-                }
-                this._arrSpan.innerHTML = Icons['angle-up'];
+                this.$emit('open');
+                this._arrow.setAttribute('type', 'angle-up');
                 this._elBody.setAttribute('open', '');
             } else {
-                this._arrSpan.innerHTML = Icons['angle-down'];
+                this._arrow.setAttribute('type', 'angle-down');
                 this._elBody.removeAttribute('open');
             }
         }

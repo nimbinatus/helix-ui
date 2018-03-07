@@ -99,6 +99,40 @@ figure {
 @import 'alert'; // needs turned into core element + theme
 @import 'navigation'; // component and theme need separated
 
+// styles added for stepper
+.hxStepCounter {
+  align-items: center;
+  background-color: @cyan-900;
+  border-radius: 1.25rem;
+  color: @gray-0;
+  display: flex;
+  flex: 0 0 2.5rem;
+  font-size: 1.5rem;
+  height: 2.5rem;
+  justify-content: center;
+  margin-right: 1rem;
+  text-align: center;
+}
+
+.hxAccordionPanelTitle,
+.hxStepTitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.hxStepTitle {
+  flex: 0 0 40%;
+  margin: 0 1rem 0 0;
+  text-align: left;
+}
+
+.hxStepSelection {
+  flex: 1 1 auto;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+}
+
 // Fixes styling issue discovered after Bootstrap CSS was removed
 figure {
   margin: 0 0 1rem;

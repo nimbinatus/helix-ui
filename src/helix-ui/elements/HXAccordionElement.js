@@ -11,12 +11,11 @@ export class HXAccordionElement extends HXElement {
 
     constructor () {
         super();
-        this._$allowMuliplePanel = !this.hasAttribute('selected-panel');
         this._onPanelOpen = this._onPanelOpen.bind(this);
     }
 
     connectedCallback () {
-        this.$upgradeProperty('selected-panel');
+        this.$upgradeProperty('selectedPanel');
         this.panels.forEach(panel => {
             panel.addEventListener('open', this._onPanelOpen);
         });
@@ -40,8 +39,9 @@ export class HXAccordionElement extends HXElement {
 
     _onPanelOpen (evt) {
         let idx = this.panels.indexOf(evt.target);
-        this.selectedPanel = idx;
-        this._openPanel(idx);
+        if (this.hasAttribute('selected-panel')) {
+            this.selectedPanel = idx;
+        }
     }
 
     _openPanel (index) {
