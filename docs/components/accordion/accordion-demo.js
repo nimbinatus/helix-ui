@@ -6,7 +6,7 @@ if (document.getElementById('vue-accordionDemo')) {
                 label: 'Show one panel only',
                 value: 0,
             },
-            variants: [ { value: 0, label: 'Show one panel only' },{ value: null, label: 'show multip panel' } ],
+            variants: [ { value: 0, label: 'Show one panel only' },{ value: null, label: 'show multi panel' } ],
         },
         computed: {
             selected: function () {
