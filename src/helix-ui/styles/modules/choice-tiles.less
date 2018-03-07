@@ -1,6 +1,10 @@
-@import (reference) 'modules/box';
+@import (reference) 'modules/grid';
 
 label.hxChoice {
+  .hxRow > & {
+    #grid.column();
+  }
+
   > input {
     position: absolute;
     top: -200px;
@@ -9,16 +13,13 @@ label.hxChoice {
       + hx-tile {
         border-color: @cyan-900;
 
-        h4 {
-          color: @cyan-900;
-        }
-
-        .hxSubBody {
-          color: @gray-900;
-        }
-
+        hx-tile-title,
         hx-icon {
           color: @cyan-900;
+        }
+
+        hx-tile-description {
+          color: @gray-900;
         }
 
         hx-icon[type="checkmark"] {
@@ -26,22 +27,31 @@ label.hxChoice {
         }
 
         &:hover {
-          background-color: @cyan-50;
           border-color: @cyan-500;
+        }
+
+        &.hxSubdued {
+          opacity: 1;
         }
       }
 
-      &[invalid] {
-        + hx-tile {
-          h4 {
+      &[invalid] + hx-tile {
+          hx-tile-title,
+          hx-icon {
             color: @red-900;
+        }
+
+        &[disabled] + hx-tile {
+          hx-tile-title, 
+          hx-tile-description {
+            color: @gray-700;
           }
     
           hx-icon {
-            color: @red-900;
+            color: @gray-500;
           }
         }
-      }
+      }  
     }
 
     &[invalid] + hx-tile {
@@ -58,20 +68,42 @@ label.hxChoice {
         box-shadow: 0 0 4px 0 fade(@red-500, 50%);
         outline: none;
       }
+
+      &[disabled] + hx-tile {
+        border-width: 1px;
+      }
+
+      &.hxSubdued {
+        opacity: 1;
+      }
     }
 
     &[disabled] + hx-tile {
       background-color: @gray-25;
       border-color: @gray-300;
       cursor: not-allowed;
+
+      &:hover {
+        background-color: @gray-25;
+        border-color: @gray-300;
+        cursor: not-allowed;
+      }
   
-      h4, .hxSubBody {
+      hx-tile-title, hx-tile-description {
         color: @gray-700;
       }
 
       hx-icon {
         color: @gray-500;
       }
+
+      &.hxSubdued {
+        opacity: 1;
+      }
+    }
+
+    &[disabled][invalid] + hx-tile {
+      border-width: 1px;
     }
   }
 }
@@ -87,19 +119,23 @@ hx-tile {
   text-align: center;
   width: 100%;
 
-  h4 {
+  hx-tile-title {
+    color: @gray-900;
+    display: block;
+    font-size: 1rem;
     font-weight: 700;
     margin-bottom: 0;
   }
 
-  .hxSubBody {
-    margin: 0.5rem 0 0 0;
+  hx-tile-description {
+    display: block;
+    font-size: 0.75rem;
   }
 
   &.hxSm {
     padding: 0.75rem;
 
-    .hxSubBody {
+    hx-tile-description {
       display: none;
     }
   }
@@ -118,12 +154,21 @@ hx-tile {
     box-shadow: 0 0 3px 0 fade(@cyan-700, 50%);
     outline: none;
   }
+
+  hx-tile-title + * {
+    margin-top: 0.5rem;
+  }
+
+  .hx-tile-icon + * {
+    margin-top: 0.5rem;
+  }
   
-  hx-icon[type="account"] {
-    color: @gray-700;
-    height: 1.75rem;
-    margin: 0 auto 0.5rem;
-    width: 1.75rem;
+  .hx-tile-icon {
+    hx-icon {
+      color: @gray-700;
+      height: 1.75rem;
+      width: 1.75rem;
+    }
   }
 
   hx-icon[type="checkmark"] {
@@ -139,12 +184,20 @@ hx-tile {
   &.hxSubdued {
     opacity: 0.7;
   }
+}
 
-  &[invalid]  {
-    &:focus {
-      border-width: 0;
-      box-shadow: 0 0 4px 0 fade(@red-500, 50%);
-      outline: none;
-    }
+@media (min-width: @grid-break-wrist) {
+  .hxRow > label.hxChoice{
+    #grid.span(12);
+  }
+}
+@media (min-width: @grid-break-lap) {
+  .hxRow > label.hxChoice{
+    #grid.span(6);
+  }
+}
+@media (min-width: @grid-break-desk) {
+  .hxRow > label.hxChoice{
+    #grid.span(4);
   }
 }

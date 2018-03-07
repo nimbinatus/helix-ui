@@ -33,18 +33,22 @@ if (document.getElementById('vue-choiceDemo')) {
             },
             snippet: function () {
                 return Util.snippet(`
-                  <label class="hxChoice">
-                    <input 
-                        type="radio" 
-                        ${this.isChecked ? 'checked' : ''}
-                        ${this.isDisabled ? 'disabled' : ''}
-                        ${this.isInvalid ? 'invalid' : ''}>
-                    <hx-tile ${this.hasClasses ? `class="${this.tileClasses}"` : ''}>
-                        <p class="hxSubbody"> 
-                          ${this.description}
-                        </p>
-                    </hx-tile>
-                  </label>
+                  <div class="hxRow">
+                    <label class="hxChoice">
+                      <input type="radio"
+                          ${this.isChecked ? 'checked' : ''}
+                          ${this.isDisabled ? 'disabled' : ''}
+                          ${this.isInvalid ? 'invalid' : ''}>
+                      <hx-tile ${this.hasClasses ? `class="${this.tileClasses}"` : ''}>
+                          <hx-tile-title>
+                            Title here
+                          </hx-tile-title>    
+                          <hx-tile-description> 
+                            ${this.description}
+                          </hx-tile-description>
+                      </hx-tile>
+                    </label>
+                  </div>
                 `);
             },
         },

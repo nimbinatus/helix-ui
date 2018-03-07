@@ -84,6 +84,8 @@
             { label: '<hx-tabpanel>', path: 'hx-tabpanel' },
             { label: '<hx-tabset>', path: 'hx-tabset' },
             { label: '<hx-tile>', path: 'hx-tile' },
+            { label: '<hx-tile-description>', path: 'hx-tile-description' },
+            { label: '<hx-tile-title>', path: 'hx-tile-title' },
             { label: '<hx-tooltip>', path: 'hx-tooltip' },
         ],
     },
