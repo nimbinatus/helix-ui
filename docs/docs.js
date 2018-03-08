@@ -1,6 +1,6 @@
 'use strict';
 
-import './components/accordion/accordion-demo';
+import './components/accordions/accordion-demo';
 import './components/box/box-demo';
 import './components/buttons/button-demo';
 import './components/checkboxes/checkbox-demo';

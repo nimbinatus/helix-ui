@@ -99,6 +99,11 @@ figure {
 @import 'alert'; // needs turned into core element + theme
 @import 'navigation'; // component and theme need separated
 
+// Fixes styling issue discovered after Bootstrap CSS was removed
+figure {
+  margin: 0 0 1rem;
+}
+
 // styles added for stepper
 .hxStepCounter {
   align-items: center;
@@ -133,7 +138,10 @@ figure {
   text-align: left;
 }
 
-// Fixes styling issue discovered after Bootstrap CSS was removed
-figure {
-  margin: 0 0 1rem;
-}
+hx-accordion.hxStepper hx-accordion-panel {
+  border-top: 1px solid @gray-300;
+
+  &:last-child {
+    border-top: 1px solid @gray-300;
+  }
+} 

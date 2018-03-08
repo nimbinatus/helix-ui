@@ -1,5 +1,5 @@
 ---
-title: Accordion
+title: Accordions
 also:
   elements/hx-accordion: <hx-accordion>
   elements/hx-accordion-panel: <hx-accordion-panel>
@@ -7,7 +7,7 @@ also:
 {% extends 'component.njk' %}
 {% block content %}
   <section id="vue-accordionDemo">
-    <h2 class="hxSectionTitle" id="demo">Accordion</h2>
+    <h2 class="hxSectionTitle" id="demo">Basic Accordion</h2>
     <div class="hxRow">
       <div class="hxCol hxSpan-9-xs">
         <div class="demo">
@@ -17,26 +17,40 @@ also:
           >
             <hx-accordion-panel>
               <header slot="header" class="hxStepHeader">
-                <span class="hxStepTitle">Start here!</span>
+                <span class="hxStepTitle">Cupcake Ipsum</span>
               </header>
               <p>
-                <label>
-                  Enter step Name :
-                  <input type="text" id="stepName" />
-                </label>
+                Cupcake ipsum dolor sit amet bonbon topping caramels. Sesame snaps
+                gummi bears liquorice cookie chupa chups fruitcake croissant
+                chocolate topping. Brownie biscuit wafer marshmallow liquorice
+                soufflé powder jelly.
               </p>
             </hx-accordion-panel>
             <hx-accordion-panel>
               <header slot="header" class="hxStepHeader">
-                <span class="hxStepTitle">Review</span>
+                <span class="hxStepTitle">Biscuit Marshmallow</span>
               </header>
-              <p> I'm inside step 2! </p>
+              <p>
+                Sweet toffee pie icing croissant halvah chupa chups. Cotton candy pie
+                sesame snaps. Muffin sesame snaps cake toffee liquorice apple pie
+                apple pie chupa chups. Lemon drops caramels sugar plum. Sweet oat cake
+                chocolate pudding cake toffee chocolate topping. Caramels caramels
+                candy muffin topping toffee. Topping candy canes sesame snaps carrot
+                cake dragée wafer jelly beans. Macaroon gummies tootsie roll cookie
+                chocolate cake chocolate cake dragée cupcake. Wafer bonbon sweet roll
+              sweet roll.
+              </p>
             </hx-accordion-panel>
             <hx-accordion-panel>
               <header slot="header" class="hxStepHeader">
-                <span class="hxStepTitle">submit</span>
+                <span class="hxStepTitle">Caramels Marzipan</span>
               </header>
-              <p> I'm inside step 3, It works! </p>
+              <p>
+                Sugar plum bonbon tiramisu tart candy canes sesame snaps tiramisu. 
+                Soufflé chocolate bar macaroon sweet bear claw dragée muffin 
+                dragée jelly. Apple pie gummies cake tiramisu dessert ice cream 
+                sweet roll. 
+              </p>
             </hx-accordion-panel>
           </hx-accordion>
           <template v-if="selected === null">
@@ -47,12 +61,10 @@ also:
                     <header slot="header" class="hxStepHeader">
                       <span class="hxStepTitle">Start here!</span>
                     </header>
-                    <p>
-                      ...
-                    </p>
+                    <p>...</p>
                   </hx-accordion-panel>
                   <hx-accordion-panel>....</hx-accordion-panel>
-                  ....
+                  <hx-accordion-panel>....</hx-accordion-panel>
                 </hx-accordion>
               {% endraw %}
             {% endcode %}
@@ -60,17 +72,15 @@ also:
           <template v-else>
             {% code 'html' %}
               {% raw %}
-                <hx-accordion id="exampleStepper" selected-panel=0>
+                <hx-accordion id="exampleStepper" selected-panel="0">
                   <hx-accordion-panel>
                     <header slot="header" class="hxStepHeader">
                       <span class="hxStepTitle">Start here!</span>
                     </header>
-                    <p>
-                      ...
-                    </p>
+                    <p>...</p>
                   </hx-accordion-panel>
                   <hx-accordion-panel>....</hx-accordion-panel>
-                  ....
+                  <hx-accordion-panel>....</hx-accordion-panel>
                 </hx-accordion>
               {% endraw %}
             {% endcode %}

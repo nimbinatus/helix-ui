@@ -18,7 +18,7 @@
         label: 'Components',
         path: 'components',
         children: [
-            { label: 'Accordion', path: 'accordion' },
+            { label: 'Accordions', path: 'accordions' },
             { label: 'Alerts', path: 'alerts' },
             { label: 'Box', path: 'box' },
             { label: 'Breadcrumbs', path: 'breadcrumbs' },
