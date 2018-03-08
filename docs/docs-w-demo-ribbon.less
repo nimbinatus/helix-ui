@@ -1,0 +1,147 @@
+/* ==================================================== *\
+ * Styles below are NOT distributed with HelixUI assets *
+\* ==================================================== */
+@import (reference) 'vars';
+// import grid mixins from toolkit
+@import (reference) 'modules/grid';
+
+@demo-container-border: 1px dashed @gray-600;
+@demo-fill-color: fade(@orange-500, 25%);
+@demo-padding-color: @magenta-100;
+
+[v-cloak] {
+  opacity: 0;
+}
+
+.homepage {
+  background-image: linear-gradient(0deg, @cyan-100, @gray-0 20%);
+}
+
+.brand-logo {
+  align-items: center;
+  display: flex;
+  height: 3.5rem;
+  justify-content: center;
+  width: @app-nav-width;
+
+  img {
+    height: 2rem;
+  }
+}
+
+.demo {
+  background-color: @gray-0;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  padding: 1.25rem;
+  position: relative;
+
+  > pre {
+    margin-top: 1.25rem;
+  }
+
+  &::after {
+    background-color: #ccc; //@gray-500;
+    color: @gray-900;
+    content: 'DEMO';
+    font-size: 0.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 1;
+    padding: 4px;
+    position: absolute;
+    right: -20px;
+    text-align: center;
+    top: 6px;
+    transform: rotate(45deg);
+    width: 4rem;
+  }
+}
+
+// Table Of Contents
+.article-toc {
+  display: block;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1rem;
+
+  > a {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+
+    &:hover {
+      //text-decoration: underline;
+    }
+  }
+
+  .top-link {
+    font-size: 0.875rem;
+    font-weight: 300;
+  }
+
+  hr {
+    border-top-color: @gray-400;
+  }
+}
+
+main {
+  section + section {
+    margin-top: 3rem;
+  }
+}
+
+// Component Status Styles
+hx-status {
+  &.hxFill {
+    &.hxDeprecated {
+      background-color: @gray-1000;
+      border-color: @gray-900;
+      color: @gray-0;
+    }
+
+    &.hxInProgress {
+      background-color: @yellow-900;
+      border-color: @yellow-500;
+      color: @gray-1000;
+    }
+
+    &.hxStable {
+      background-color: @green-900;
+      border-color: @green-900;
+      color: @gray-0;
+    }
+  }
+}
+
+.metadata {
+  background-color: @cyan-50;
+  border: 1px solid @cyan-100;
+  box-shadow: inset 0.5rem 0 0 0 @cyan-100;
+
+  hx-dt {
+    #grid.span(3);
+  }
+  hx-dd {
+    #grid.span(9);
+  }
+}
+
+@import 'demo/box-docs';
+@import 'demo/button-docs';
+@import 'demo/grid-docs';
+@import 'demo/icon-docs';
+@import 'demo/nav-docs';
+@import 'demo/panel-docs';
+@import 'demo/popover-docs';
+@import 'demo/search-docs';
+@import 'demo/tabs-docs';
+@import 'demo/tooltip-docs';
+@import 'demo/typography-docs';
+
+// SHAME
+dd {
+  margin-bottom: 0.5em;
+  margin-left: 1em;
+}
