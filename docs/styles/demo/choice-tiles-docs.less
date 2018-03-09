@@ -1,45 +1,59 @@
 @import (reference) 'modules/choice-tiles';
 
-#vue-choiceDemo {
-  hx-tile {
-    max-width: 15rem;
-
-    &.hxSm {
-      max-width: 8rem;
+.choice-tile-demo {
+  label.hxChoice > input {
+    /* Default (focus, hover) */
+    &.pseudo-focus + hx-tile {
+      &:extend(label.hxChoice > input:focus + hx-tile all);
+    }
+    & + hx-tile.pseudo-hover {
+      &:extend(label.hxChoice > input + hx-tile:hover all);
     }
 
-    &.hxLg {
-      max-width: 20rem;
+    /* Subdued (focus, hover) */
+    &.pseudo-focus + hx-tile.hxSubdued {
+      &:extend(label.hxChoice > input:focus + hx-tile.hxSubdued all);
     }
-  }
-}
+    & + hx-tile.hxSubdued.pseudo-hover {
+      &:extend(label.hxChoice > input + hx-tile:hover.hxSubdued all);
+    }
 
-hx-tile {
-  &.pseudo-hover {
-    &:extend(hx-tile:hover);
-  }
+    /* Checked (focus, hover) */
+    &:checked.pseudo-focus + hx-tile {
+      &:extend(label.hxChoice > input:checked:focus + hx-tile all);
+    }
+    &:checked + hx-tile.pseudo-hover {
+      &:extend(label.hxChoice > input:checked + hx-tile:hover all);
+    }
 
-  &.pseudo-hover-checked {
-    &:extend(hx-tile:hover);
-    border-color: @cyan-500 !important;
-  }
+    /* Invalid (focus, hover) */
+    &[invalid].pseudo-focus + hx-tile {
+      &:extend(label.hxChoice > input[invalid]:focus + hx-tile all);
+    }
+    &[invalid] + hx-tile.pseudo-hover {
+      &:extend(label.hxChoice > input[invalid] + hx-tile:hover all);
+    }
 
-  &.pseudo-hover-focus {
-    &:extend(hx-tile:focus);
-  }
+    /* Invalid + Checked (focus, hover) */
+    &[invalid]:checked.pseudo-focus + hx-tile {
+      &:extend(label.hxChoice > input[invalid]:checked:focus + hx-tile all);
+    }
+    &[invalid]:checked + hx-tile.pseudo-hover {
+      &:extend(label.hxChoice > input[invalid]:checked + hx-tile:hover all);
+    }
 
-  &.pseudo-invalid-hover {
-    &:extend(label.hxChoice > input[invalid] + hx-tile:hover);
-  }
-
-  &.pseudo-invalid-hover-checked {
-    &:extend(label.hxChoice > input:checked[invalid] + hx-tile);
-    &:extend(label.hxChoice > input[invalid] + hx-tile:hover);
-  }
-
-  &.pseudo-invalid-focus,
-  &.pseudo-invalid-focus-checked {
-    &:extend(label.hxChoice > input[invalid] + hx-tile:focus);
-    border: none;
+    /* Disabled */
+    &[disabled] + hx-tile.pseudo-hover {
+      &:extend(label.hxChoice > input[disabled] + hx-tile:hover all);
+    }
+    &[disabled][invalid] + hx-tile.pseudo-hover {
+      &:extend(label.hxChoice > input[disabled][invalid] + hx-tile:hover all);
+    }
+    &[disabled]:checked + hx-tile.pseudo-hover {
+      &:extend(label.hxChoice > input[disabled]:checked + hx-tile:hover all);
+    }
+    &[disabled][invalid]:checked + hx-tile.pseudo-hover {
+      &:extend(label.hxChoice > input[disabled][invalid]:checked + hx-tile:hover all);
+    }
   }
 }

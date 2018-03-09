@@ -19,6 +19,11 @@ if (document.getElementById('vue-choiceDemo')) {
             isInvalid: false,
             isSubdued: false,
         },
+        methods: {
+            onClick: function (evt) {
+                this.isChecked = evt.target.checked;
+            },
+        },
         computed: {
             tileClasses: function () {
                 let out = [];
@@ -42,8 +47,8 @@ if (document.getElementById('vue-choiceDemo')) {
                       <hx-tile ${this.hasClasses ? `class="${this.tileClasses}"` : ''}>
                           <hx-tile-title>
                             Title here
-                          </hx-tile-title>    
-                          <hx-tile-description> 
+                          </hx-tile-title>
+                          <hx-tile-description>
                             ${this.description}
                           </hx-tile-description>
                       </hx-tile>
